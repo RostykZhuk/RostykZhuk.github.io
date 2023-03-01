@@ -1,24 +1,20 @@
 import React from 'react';
 
 function PokemonList({ pokemonList, setSelectedPokemon }) {
-  console.log(pokemonList);
   return (
     <div>
-      {pokemonList.map((pokemon, index) => (
+      {pokemonList.map((pokemon) => (
         <div
-          key={index}
+          key={pokemon.id}
           onClick={() =>
             setSelectedPokemon({
               ...pokemon,
-              id: index + 1,
             })
           }
         >
           <div>
             <img
-              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
-                index + 1
-              }.png`}
+              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`}
               alt={pokemon.name}
             />
           </div>
