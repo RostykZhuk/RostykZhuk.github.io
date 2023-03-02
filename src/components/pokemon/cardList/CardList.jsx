@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import PokemonList from './PokemonList';
-import LoadMoreButton from './LoadMoreButton';
-import PokemonInfo from './PokemonInfo';
+import PokemonList from '../pokemonList/PokemonList';
+import LoadMoreButton from '../btn/LoadMoreButton';
+import PokemonInfo from '../pokemonInfo/PokemonInfo';
+import './CardList.css';
 
 function CardList() {
   const [pokemonList, setPokemonList] = useState([]);
@@ -18,14 +19,19 @@ function CardList() {
         const pokemonDataList = await Promise.all(
           response.data.results.map(async (pokemon, index) => {
             const pokemonResponse = await axios.get(pokemon.url);
+            console.log(`Pokemon ${index + 1}:`, pokemonResponse.data);
+
             return {
               ...pokemon,
               id: index + 1,
               types: pokemonResponse.data.types,
               stats: pokemonResponse.data.stats,
+              weight: pokemonResponse.data.weight,
+              moves: pokemonResponse.data.moves.length - 1,
             };
           })
         );
+        console.log('Pokemon list:', pokemonDataList);
         setPokemonList(pokemonDataList);
         setNextPageUrl(response.data.next);
         setIsLoading(false);
@@ -47,6 +53,8 @@ function CardList() {
             id: startIndex + index + 1,
             types: pokemonResponse.data.types,
             stats: pokemonResponse.data.stats,
+            weight: pokemonResponse.data.weight,
+            moves: pokemonResponse.data.moves.length - 1,
           };
         })
       );
@@ -77,14 +85,46 @@ function CardList() {
 
   return (
     <div>
-      <div>
-        Filter by type:
-        <button onClick={() => handleTypeSelect('')}>All</button>
-        <button onClick={() => handleTypeSelect('fire')}>Fire</button>
-        <button onClick={() => handleTypeSelect('water')}>Water</button>
-        <button onClick={() => handleTypeSelect('bug')}>Bug</button>
-        <button onClick={() => handleTypeSelect('grass')}>Grass</button>
+      <div className='title-container'>
+        <h1 className='title'>Pokedex</h1>
       </div>
+      <div className='filter-buttons-container'>
+        <span style={{ marginRight: '8px' }}>Filter by type:</span>
+        <button className='filter-button' onClick={() => handleTypeSelect('')}>
+          All
+        </button>
+        <button
+          className='filter-button'
+          onClick={() => handleTypeSelect('fire')}
+        >
+          Fire
+        </button>
+        <button
+          className='filter-button'
+          onClick={() => handleTypeSelect('water')}
+        >
+          Water
+        </button>
+        <button
+          className='filter-button'
+          onClick={() => handleTypeSelect('ground')}
+        >
+          Ground
+        </button>
+        <button
+          className='filter-button'
+          onClick={() => handleTypeSelect('bug')}
+        >
+          Bug
+        </button>
+        <button
+          className='filter-button'
+          onClick={() => handleTypeSelect('grass')}
+        >
+          Grass
+        </button>
+      </div>
+
       <PokemonList
         pokemonList={filteredPokemonList}
         setSelectedPokemon={setSelectedPokemon}
