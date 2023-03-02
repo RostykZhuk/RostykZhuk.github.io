@@ -1,5 +1,4 @@
 .pokemon-info {
-  background-color: #fff;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   position: fixed;
@@ -10,18 +9,12 @@
   overflow-y: auto;
 }
 
-.pokemon-image img {
-  width: 100%;
-}
-
 .pokemon-types {
   margin-top: 10px;
 }
 
 .pokemon-types > div {
-  display: inline-block;
-  background-color: #f1f1f1;
-  border-radius: 4px;
+  border-radius: 5px;
   padding: 5px 10px;
   margin-right: 10px;
 }

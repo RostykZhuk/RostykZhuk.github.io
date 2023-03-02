@@ -1,9 +1,9 @@
-.container {
+.btn-container {
   display: flex;
   justify-content: center;
 }
 
-.load-more-btn {
+.btn {
   background-color: lightskyblue;
   color: white;
   padding: 10px 20px;
@@ -14,6 +14,6 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
-.load-more-btn:hover {
+.btn:hover {
   background-color: deepskyblue;
 }
