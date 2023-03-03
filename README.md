@@ -1,6 +1,23 @@
-# Test-Task
-1 Clone this repo using git clone https://github.com/RostykZhuk/Test-Task.git
-2 Move to Test-Task folder
-3 In the cmd write npm i to install all dependencies
-4 npm run deploy 
-5 after that click on that link where the Test-Task is running
+# Getting Started Test-Task
+
+
+## Install
+
+Clone this repository from github 
+```
+git clone ....
+```
+Run CLI and run  next command in to CLI:
+
+```
+npm install
+```
+
+## Available Scripts
+
+In the project directory, you can run:
+
+### `4 npm run deploy `
+
+Runs the app in the development mode.\
+Open the link to view it in your browser.
